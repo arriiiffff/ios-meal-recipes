@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+struct ListMealsModel : Decodable {
+    let strMeal : String
+    let strMealThumb : String
+    let idMeal : String
+}
+
+struct ListMealsResponse : Decodable {
+    let meals : [ListMealsModel]
+}

@@ -12,6 +12,7 @@ import RxSwift
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var heigtCollection: NSLayoutConstraint!
     @IBOutlet weak var collectionSlide: UICollectionView!
     @IBOutlet weak var collectionCategory: UICollectionView!
     let refreshControl = UIRefreshControl()
@@ -24,6 +25,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.setupCollection()
         self.setupViewModel()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     private func setupCollection(){
@@ -38,9 +46,12 @@ class ViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         output.mealListCellData
-            .drive(self.collectionCategory.rx.items(cellIdentifier: "MealCell", cellType: MealCell.self)){
-                row , model , cell in
-                cell.configureCell(with: model)
+            .drive(self.collectionCategory
+                .rx
+                .items(cellIdentifier: "MealCell", cellType: MealCell.self)){
+                    row , model , cell in
+                    cell.configureCell(with: model)
+                    self.heigtCollection.constant = self.collectionCategory.contentSize.height
         }.disposed(by: disposeBag)
         
         output.errorData
@@ -49,7 +60,12 @@ class ViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         output.selectedIndex.drive(onNext: { (index , model) in
-            
+            print("ini index \(index), model: \(model)")
+            let storyBoard = UIStoryboard(name: "ListMeals", bundle: nil)
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: "ListMealsVC") as? ListMealsVC else {return}
+            vc.category = model.strCategory
+            vc.title = model.strCategory
+            self.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: disposeBag)
         
         output

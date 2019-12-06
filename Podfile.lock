@@ -1,0 +1,40 @@
+PODS:
+  - Realm (4.1.0):
+    - Realm/Headers (= 4.1.0)
+  - Realm/Headers (4.1.0)
+  - RealmSwift (4.1.0):
+    - Realm (= 4.1.0)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
+  - SwipeCellKit (2.7.1)
+
+DEPENDENCIES:
+  - RealmSwift (= 4.1.0)
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5)
+  - SwipeCellKit
+
+SPEC REPOS:
+  trunk:
+    - Realm
+    - RealmSwift
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SwipeCellKit
+
+SPEC CHECKSUMS:
+  Realm: 5d1453468eca02c901c50b8a356f4a98a15b57aa
+  RealmSwift: 1d238caa5c64a590c669beef1a7e858a6cf55a1c
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
+
+PODFILE CHECKSUM: 69203b8e9b1f5f81917e8f2100a74731e9bfbb7a
+
+COCOAPODS: 1.8.4

@@ -8,12 +8,13 @@
 
 import Foundation
 
-struct Category : Decodable {
-    let strMeal : String
-    let strMealThumb : String
-    let idMeal : String
+struct MealCategory : Decodable {
+    let idCategory : String
+    let strCategory : String
+    let strCategoryThumb : String
+    let strCategoryDescription : String
 }
 
 struct CategoryResponse : Decodable {
-    let meals : [Category]
+    let categories : [MealCategory]
 }
